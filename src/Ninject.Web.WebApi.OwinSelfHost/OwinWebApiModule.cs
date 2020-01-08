@@ -1,5 +1,5 @@
 ﻿// -------------------------------------------------------------------------------------------------
-// <copyright file="WebApiWebHostModule.cs" company="Ninject Project Contributors">
+// <copyright file="OwinWebApiModule.cs" company="Ninject Project Contributors">
 //   Copyright (c) 2007-2010 Enkari, Ltd. All rights reserved.
 //   Copyright (c) 2010-2017 Ninject Project Contributors. All rights reserved.
 //
@@ -19,26 +19,40 @@
 // </copyright>
 // -------------------------------------------------------------------------------------------------
 
-namespace Ninject.Web.WebApi.WebHost
+namespace Ninject.Web.WebApi.OwinSelfHost
 {
     using System;
     using System.Web.Http;
 
     using Ninject.Modules;
-    using Ninject.Web.Common;
 
     /// <summary>
-    /// Defines the bindings of the WebApi WebHost extension.
+    /// The OWIN web API module.
     /// </summary>
-    public class WebApiWebHostModule : NinjectModule
+    internal class OwinWebApiModule : NinjectModule
     {
         /// <summary>
-        /// Loads the module into the kernel.
+        /// The configuration.
+        /// </summary>
+        private readonly HttpConfiguration configuration;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OwinWebApiModule"/> class.
+        /// </summary>
+        /// <param name="configuration">
+        /// The configuration.
+        /// </param>
+        public OwinWebApiModule(HttpConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
+        /// <summary>
+        /// Loads the module.
         /// </summary>
         public override void Load()
         {
-            this.Bind<HttpConfiguration>().ToMethod(ctx => GlobalConfiguration.Configuration);
-            this.Kernel.Components.Add<INinjectHttpApplicationPlugin, NinjectWebApiWebHostHttpApplicationPlugin>();
+            this.Kernel.Bind<HttpConfiguration>().ToConstant(this.configuration);
         }
 
         /// <summary>

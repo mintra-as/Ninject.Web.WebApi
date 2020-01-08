@@ -40,7 +40,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value for the argument.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(string name, object value);
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback to invoke to get the value for the argument.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(string name, Func<IContext, object> callback);
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="value">The value for the property.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithPropertyValue(string name, object value);
 
         /// <summary>
@@ -64,14 +64,14 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The callback to invoke to get the value for the property.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithPropertyValue(string name, Func<IContext, object> callback);
 
         /// <summary>
         /// Adds a custom parameter to the binding.
         /// </summary>
         /// <param name="parameter">The parameter.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithParameter(IParameter parameter);
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="key">The metadata key.</param>
         /// <param name="value">The metadata value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithMetadata(string key, object value);
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(
             string name,
             Func<IContext, HttpConfiguration, HttpActionDescriptor, object> callback);
@@ -100,7 +100,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
         /// <returns>
-        /// The fluent syntax to define more information
+        /// The fluent syntax to define more information.
         /// </returns>
         IFilterBindingWithOrOnSyntax<T> WithConstructorArgumentFromActionAttribute<TAttribute>(
             string name,
@@ -115,7 +115,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
         /// <returns>
-        /// The fluent syntax to define more information
+        /// The fluent syntax to define more information.
         /// </returns>
         IFilterBindingWithOrOnSyntax<T> WithConstructorArgumentFromControllerAttribute<TAttribute>(
             string name,
@@ -127,7 +127,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The callback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithPropertyValue(
             string name,
             Func<IContext, HttpConfiguration, HttpActionDescriptor, object> callback);
@@ -139,7 +139,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The callback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithPropertyValueFromActionAttribute<TAttribute>(
             string name,
             Func<TAttribute, object> callback)
@@ -152,7 +152,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The callback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> WithPropertyValueFromControllerAttribute<TAttribute>(
             string name,
             Func<TAttribute, object> callback)

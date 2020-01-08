@@ -1,5 +1,5 @@
-// -------------------------------------------------------------------------------------------------
-// <copyright file="WebApiModule.cs" company="Ninject Project Contributors">
+﻿// -------------------------------------------------------------------------------------------------
+// <copyright file="WebApiSelfHostModule.cs" company="Ninject Project Contributors">
 //   Copyright (c) 2007-2010 Enkari, Ltd. All rights reserved.
 //   Copyright (c) 2010-2017 Ninject Project Contributors. All rights reserved.
 //
@@ -19,36 +19,39 @@
 // </copyright>
 // -------------------------------------------------------------------------------------------------
 
-namespace Ninject.Web.WebApi
+namespace Ninject.Web.WebApi.Selfhost
 {
-    using System.Web.Http.Dependencies;
-    using System.Web.Http.Filters;
-    using System.Web.Http.Validation;
+    using System;
+    using System.Web.Http;
+    using System.Web.Http.SelfHost;
 
     using Ninject.Modules;
-    using Ninject.Web.Common;
-    using Ninject.Web.WebApi.Filter;
-    using Ninject.Web.WebApi.Validation;
+    using Ninject.Web.Common.SelfHost;
+    using Ninject.Web.WebApi;
 
     /// <summary>
-    /// Defines the bindings and plugins of the WebApi extension.
+    /// Web API Selfhosting ninject module.
     /// </summary>
-    public class WebApiModule : NinjectModule
+    public class WebApiSelfHostModule : NinjectModule
     {
         /// <summary>
         /// Loads the module into the kernel.
         /// </summary>
         public override void Load()
         {
-            this.Kernel.Components.Add<INinjectHttpApplicationPlugin, NinjectWebApiHttpApplicationPlugin>();
+            this.Kernel.Bind<INinjectSelfHost>().To<NinjectWebApiSelfHost>();
+            this.Kernel.Bind<HttpConfiguration>().ToMethod(ctx => ctx.Kernel.Get<HttpSelfHostConfiguration>());
+        }
 
-            this.Bind<IDependencyResolver>().To<NinjectDependencyResolver>();
-
-            this.Bind<IFilterProvider>().To<DefaultFilterProvider>();
-            this.Bind<IFilterProvider>().To<NinjectFilterProvider>();
-
-            this.Bind<ModelValidatorProvider>().To<NinjectDefaultModelValidatorProvider>();
-            this.Bind<ModelValidatorProvider>().To<NinjectDataAnnotationsModelValidatorProvider>();
+        /// <summary>
+        /// Called after loading the modules. A module can verify here if all other required modules are loaded.
+        /// </summary>
+        public override void VerifyRequiredModulesAreLoaded()
+        {
+            if (!this.Kernel.HasModule(typeof(WebApiModule).FullName))
+            {
+                throw new InvalidOperationException("This module requires Ninject.Web.WebAPI extension");
+            }
         }
     }
 }

@@ -30,21 +30,21 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
     /// <summary>
     /// Used to add additional information or actions to a binding.
     /// </summary>
-    /// <typeparam name="T">The type of the service</typeparam>
+    /// <typeparam name="T">The type of the service.</typeparam>
     public interface IFilterBindingWhenSyntax<out T>
     {
         /// <summary>
         /// Indicates that the binding should be used only for requests that support the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> When(Func<IRequest, bool> condition);
 
         /// <summary>
         /// Indicates that the binding should be used only for requests that support the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> When(Func<HttpConfiguration, HttpActionDescriptor, bool> condition);
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <param name="attributeType">Type of the attribute.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenActionMethodHas(Type attributeType);
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenActionMethodHas<TAttribute>();
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <param name="attributeType">Type of the attribute.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerHas(Type attributeType);
 
         /// <summary>
@@ -76,21 +76,21 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerHas<TAttribute>();
 
         /// <summary>
         /// Whens the type of the controller.
         /// </summary>
         /// <param name="controllerType">Type of the controller.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerType(Type controllerType);
 
         /// <summary>
         /// Whens the type of the controller.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerType<TAttribute>();
     }
 }

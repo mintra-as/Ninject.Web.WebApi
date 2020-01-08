@@ -58,7 +58,7 @@ namespace Ninject.Web.WebApi.Filter
         /// <param name="actionContext">The action context.</param>
         /// <param name="cancellationToken">The cancellation token.</param>
         /// <param name="continuation">The continuation.</param>
-        /// <returns>The task</returns>
+        /// <returns>The task.</returns>
         public Task<HttpResponseMessage> ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func<Task<HttpResponseMessage>> continuation)
         {
             return this.internalFilter.ExecuteActionFilterAsync(actionContext, cancellationToken, continuation);

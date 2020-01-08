@@ -28,7 +28,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
     using System.Web.Http.Controllers;
 
     /// <summary>
-    /// Extension methods for the http action descriptor
+    /// Extension methods for the http action descriptor.
     /// </summary>
     public static class HttpActionDescriptorExtensionMethods
     {

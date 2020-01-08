@@ -6,7 +6,7 @@
     <Authors>Remo Gloor, Ninject Contributors</Authors>
     <Company>Ninject Project Contributors</Company>
     <Product>Ninject integration for WebApi 2</Product>
-    <Description>Extension for Ninject providing integration with ASP.NET MVC WebAPI 2</Description>
+    <Description>Extension for Ninject providing integration with ASP.NET WebAPI 2</Description>
     <Copyright>2010 bbv Software Services AG. 2010-2017 Ninject Contributors.</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyOriginatorKeyFile>..\Ninject.snk</AssemblyOriginatorKeyFile>
@@ -40,9 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.3" />
-    <PackageReference Include="Ninject.Web.Common" Version="3.3.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.0-beta004">
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.7" />
+    <PackageReference Include="Ninject.Web.Common" Version="3.3.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>

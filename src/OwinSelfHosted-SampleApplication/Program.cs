@@ -1,5 +1,5 @@
 ﻿//-------------------------------------------------------------------------------
-// <copyright file="ValuesProvider.cs" company="Ninject Project Contributors">
+// <copyright file="Program.cs" company="Ninject Project Contributors">
 //   Copyright (c) 2012 Ninject Project Contributors
 //   Authors: Remo Gloor (remo.gloor@gmail.com)
 //           
@@ -19,33 +19,31 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SampleApplication.Services.ValuesService
+namespace OwinSelfHosted_SampleApplication
 {
     using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
+
+    using Microsoft.Owin.Hosting;
 
     /// <summary>
-    /// Provides the values
+    /// The program main.
     /// </summary>
-    public class ValuesProvider : IValuesProvider, IDisposable
+    public class Program
     {
-        private int value = 1;
-
         /// <summary>
-        /// Gets the values.
+        /// The application main method.
         /// </summary>
-        /// <returns>The values</returns>
-        public IEnumerable<string> GetValues()
+        /// <param name="args">The arguments.</param>
+        static void Main(string[] args)
         {
-            yield return "Value" + this.value++;
-            yield return "Value" + this.value++;
-            yield return "Value" + this.value++;
-        }
+            string baseAddress = "http://localhost:8081/";
 
-        public void Dispose()
-        {
-            Debugger.Break();
+            // Start OWIN host 
+            using (WebApp.Start<Startup>(url: baseAddress))
+            {
+                Console.WriteLine("Press Enter to quit.");
+                Console.ReadLine();
+            }
         }
     }
 }

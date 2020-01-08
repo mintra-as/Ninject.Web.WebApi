@@ -19,14 +19,13 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace OwinSampleApplication
+namespace OwinSelfHosted_SampleApplication
 {
     using System.Reflection;
     using System.Web.Http;
 
     using Ninject;
     using Ninject.Web.Common.Owin;
-
     using Owin;
 
     /// <summary>
@@ -42,8 +41,14 @@ namespace OwinSampleApplication
         /// </param>
         public void Configuration(IAppBuilder app)
         {
+            var configuration = new HttpConfiguration();
+            configuration.Routes.MapHttpRoute(
+                name: "DefaultApi",
+                routeTemplate: "{controller}/{id}",
+                defaults: new { id = RouteParameter.Optional, controller = "values" });
+
             app.UseNinjectMiddleware(CreateKernel);
-            app.UseWebApi(GlobalConfiguration.Configuration);
+            app.UseNinjectWebApi(configuration);
         }
 
         /// <summary>

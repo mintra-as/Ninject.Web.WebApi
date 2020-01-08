@@ -38,27 +38,27 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that only a single instance of the binding should be created, and then
         /// should be re-used for all subsequent requests.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InSingletonScope();
 
         /// <summary>
         /// Indicates that instances activated via the binding should not be re-used, nor have
         /// their life cycle managed by Ninject.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InTransientScope();
 
         /// <summary>
         /// Indicates that instances activated via the binding should be re-used within the same thread.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InThreadScope();
 
         /// <summary>
         /// Indicates that instances activated via the binding should be re-used within the same
         /// HTTP request.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InRequestScope();
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// returned by the provided callback remains alive (that is, has not been garbage collected).
         /// </summary>
         /// <param name="scope">The callback that returns the scope.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InScope(Func<IContext, object> scope);
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// returned by the provided callback remains alive (that is, has not been garbage collected).
         /// </summary>
         /// <param name="scope">The callback that returns the scope.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingNamedWithOrOnSyntax<T> InScope(Func<IContext, HttpConfiguration, HttpActionDescriptor, object> scope);
     }
 }

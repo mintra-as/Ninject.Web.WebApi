@@ -38,35 +38,35 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingOnSyntax<T> OnActivation(Action<T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingOnSyntax<T> OnActivation(Action<IContext, T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are deactivated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingOnSyntax<T> OnDeactivation(Action<T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are deactivated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingOnSyntax<T> OnDeactivation(Action<IContext, T> action);
 
         /// <summary>
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingOnSyntax<T> OnActivation(Action<IContext, HttpConfiguration, HttpActionDescriptor, T> action);
     }
 }

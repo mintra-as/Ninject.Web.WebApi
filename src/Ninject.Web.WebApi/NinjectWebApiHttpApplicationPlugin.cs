@@ -22,6 +22,7 @@
 namespace Ninject.Web.WebApi
 {
     using System.Linq;
+    using System.Runtime.Remoting.Messaging;
     using System.Web.Http;
     using System.Web.Http.Dependencies;
     using System.Web.Http.Filters;
@@ -33,7 +34,7 @@ namespace Ninject.Web.WebApi
     using Ninject.Web.WebApi.Filter;
 
     /// <summary>
-    /// The web plugin implementation for MVC
+    /// The web plugin implementation for WebApi.
     /// </summary>
     public class NinjectWebApiHttpApplicationPlugin : NinjectComponent, INinjectHttpApplicationPlugin
     {
@@ -42,17 +43,13 @@ namespace Ninject.Web.WebApi
         /// </summary>
         private readonly IKernel kernel;
 
-        private readonly IWebApiRequestScopeProvider webApiRequestScopeProvider;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="NinjectWebApiHttpApplicationPlugin"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
-        /// <param name="webApiRequestScopeProvider">The web API request scope provider.</param>
-        public NinjectWebApiHttpApplicationPlugin(IKernel kernel, IWebApiRequestScopeProvider webApiRequestScopeProvider)
+        public NinjectWebApiHttpApplicationPlugin(IKernel kernel)
         {
             this.kernel = kernel;
-            this.webApiRequestScopeProvider = webApiRequestScopeProvider;
         }
 
         /// <summary>
@@ -62,7 +59,7 @@ namespace Ninject.Web.WebApi
         /// <returns>The request scope.</returns>
         public object GetRequestScope(IContext context)
         {
-            return this.webApiRequestScopeProvider.GetRequestScope(context);
+            return CallContext.LogicalGetData(NinjectDependencyResolver.NinjectWebApiRequestScope);
         }
 
         /// <summary>

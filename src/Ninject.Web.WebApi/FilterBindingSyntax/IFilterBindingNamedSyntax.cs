@@ -34,7 +34,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// necessarily unique; multiple bindings for a given service may be registered with the same name.
         /// </summary>
         /// <param name="name">The name to give the binding.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         IFilterBindingWithOrOnSyntax<T> Named(string name);
     }
 }

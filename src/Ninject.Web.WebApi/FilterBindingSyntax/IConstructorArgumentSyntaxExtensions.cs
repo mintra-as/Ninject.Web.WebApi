@@ -28,7 +28,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
     using Ninject.Web.WebApi.Filter;
 
     /// <summary>
-    /// Extension methods for <see cref="IConstructorArgumentSyntax"/>
+    /// Extension methods for <see cref="IConstructorArgumentSyntax"/>.
     /// </summary>
     public static class IConstructorArgumentSyntaxExtensions
     {

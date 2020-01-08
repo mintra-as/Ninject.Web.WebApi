@@ -1,5 +1,5 @@
-// -------------------------------------------------------------------------------------------------
-// <copyright file="NinjectDependencyResolver.cs" company="Ninject Project Contributors">
+﻿// -------------------------------------------------------------------------------------------------
+// <copyright file="NinjectWebApiWebHostHttpApplicationPlugin.cs" company="Ninject Project Contributors">
 //   Copyright (c) 2007-2010 Enkari, Ltd. All rights reserved.
 //   Copyright (c) 2010-2017 Ninject Project Contributors. All rights reserved.
 //
@@ -19,40 +19,41 @@
 // </copyright>
 // -------------------------------------------------------------------------------------------------
 
-namespace Ninject.Web.WebApi
+namespace Ninject.Web.WebApi.WebHost
 {
-    using System.Runtime.Remoting.Messaging;
-    using System.Web.Http.Dependencies;
+    using System.Web;
+
+    using Ninject.Activation;
+    using Ninject.Components;
+    using Ninject.Web.Common;
 
     /// <summary>
-    /// Dependency resolver implementation for ninject.
+    /// The web plugin implementation for WebApi hosted in ASP.NET.
     /// </summary>
-    public class NinjectDependencyResolver : NinjectDependencyScope, IDependencyResolver
+    public class NinjectWebApiWebHostHttpApplicationPlugin : NinjectComponent, INinjectHttpApplicationPlugin
     {
         /// <summary>
-        /// The Ninject Owin request scope.
+        /// Gets the request scope.
         /// </summary>
-        public const string NinjectWebApiRequestScope = "NinjectWebApiRequestScope";
+        /// <param name="context">The context.</param>
+        /// <returns>The request scope.</returns>
+        public object GetRequestScope(IContext context)
+        {
+            return HttpContext.Current;
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="NinjectDependencyResolver"/> class.
+        /// Starts this instance.
         /// </summary>
-        /// <param name="kernel">The <see cref="IKernel"/>.</param>
-        public NinjectDependencyResolver(IKernel kernel)
-            : base(kernel)
+        public void Start()
         {
         }
 
         /// <summary>
-        /// Begins the scope.
+        /// Stops this instance.
         /// </summary>
-        /// <returns>The new scope.</returns>
-        public virtual IDependencyScope BeginScope()
+        public void Stop()
         {
-            var scope = new NinjectDependencyResolver(this.Kernel);
-            CallContext.LogicalSetData(NinjectWebApiRequestScope, scope);
-
-            return scope;
         }
     }
 }

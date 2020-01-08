@@ -5,16 +5,16 @@
     <Version>0.0.0</Version>
     <Authors>Remo Gloor, Ninject Contributors</Authors>
     <Company>Ninject Project Contributors</Company>
-    <Product>Ninject integration for WebApi 2 web host</Product>
-    <Description>Extension for Ninject providing integration with ASP.NET WebAPI 2 web host</Description>
+    <Product>Ninject integration for WebApi 2 self host</Product>
+    <Description>Extension for Ninject providing integration with ASP.NET WebAPI 2 self host</Description>
     <Copyright>2010 bbv Software Services AG. 2010-2017 Ninject Contributors.</Copyright>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyOriginatorKeyFile>..\Ninject.snk</AssemblyOriginatorKeyFile>
     <SignAssembly>true</SignAssembly>
     <PublicSign Condition=" '$(OS)' != 'Windows_NT' ">true</PublicSign>
-    <PackageId>Ninject.Web.WebApi.WebHost</PackageId>
+    <PackageId>Ninject.Web.WebApi.SelfHost</PackageId>
     <PackageVersion>0.0.0</PackageVersion>
-    <PackageTags>IoC;DI;Ninject;Web;Api;WebHost</PackageTags>
+    <PackageTags>IoC;DI;Ninject;Web;Api;SelfHost</PackageTags>
     <PackageProjectUrl>http://www.ninject.org/</PackageProjectUrl>
     <PackageReleaseNotes>https://github.com/ninject/Ninject.Web.WebApi/blob/master/CHANGELOG.md</PackageReleaseNotes>
     <PackageIconUrl>https://github.com/ninject/ninject/raw/master/logos/Ninject-Logo32.png</PackageIconUrl>
@@ -36,8 +36,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNet.WebApi.WebHost" Version="5.2.7" />
-    <PackageReference Include="Ninject.Web.Common.WebHost" Version="3.3.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.SelfHost" Version="5.2.7" />
+    <PackageReference Include="Ninject.Web.Common.SelfHost" Version="3.3.2" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>

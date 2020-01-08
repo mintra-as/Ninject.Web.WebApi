@@ -41,7 +41,7 @@ namespace Ninject.Web.WebApi.Validation
         private readonly IKernel kernel;
 
         /// <summary>
-        /// The method info to get the attribute from the <see cref="DataAnnotationsModelValidatorProvider"/>
+        /// The method info to get the attribute from the <see cref="DataAnnotationsModelValidatorProvider"/>.
         /// </summary>
         private readonly MethodInfo getAttributeMethodInfo;
 

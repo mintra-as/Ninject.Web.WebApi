@@ -1,5 +1,5 @@
-﻿//-------------------------------------------------------------------------------
-// <copyright file="ValuesProvider.cs" company="Ninject Project Contributors">
+//-------------------------------------------------------------------------------
+// <copyright file="NinjectWebCommon.cs" company="Ninject Project Contributors">
 //   Copyright (c) 2012 Ninject Project Contributors
 //   Authors: Remo Gloor (remo.gloor@gmail.com)
 //           
@@ -19,33 +19,24 @@
 // </copyright>
 //-------------------------------------------------------------------------------
 
-namespace SampleApplication.Services.ValuesService
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(SampleApplication.App_Start.NinjectWebCommon), "Start")]
+
+namespace SampleApplication.App_Start
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Diagnostics;
+    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+    using Ninject.Web.Common.WebHost;
 
     /// <summary>
-    /// Provides the values
+    /// Bootstrapper for the application.
     /// </summary>
-    public class ValuesProvider : IValuesProvider, IDisposable
+    public static class NinjectWebCommon 
     {
-        private int value = 1;
-
         /// <summary>
-        /// Gets the values.
+        /// Starts the application
         /// </summary>
-        /// <returns>The values</returns>
-        public IEnumerable<string> GetValues()
+        public static void Start() 
         {
-            yield return "Value" + this.value++;
-            yield return "Value" + this.value++;
-            yield return "Value" + this.value++;
-        }
-
-        public void Dispose()
-        {
-            Debugger.Break();
+            DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
         }
     }
 }

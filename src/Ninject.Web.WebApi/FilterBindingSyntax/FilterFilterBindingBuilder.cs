@@ -97,7 +97,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// necessarily unique; multiple bindings for a given service may be registered with the same name.
         /// </summary>
         /// <param name="name">The name to give the binding.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> Named(string name)
         {
             this.filterBindingSyntax.Named(name);
@@ -108,7 +108,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the binding should be used only for requests that support the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> When(Func<IRequest, bool> condition)
         {
             this.ninjectFilterBindingSyntax.When(condition);
@@ -119,7 +119,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the binding should be used only for requests that support the specified condition.
         /// </summary>
         /// <param name="condition">The condition.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> When(Func<HttpConfiguration, HttpActionDescriptor, bool> condition)
         {
             this.When(ctx =>
@@ -136,7 +136,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <param name="attributeType">Type of the attribute.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenActionMethodHas(Type attributeType)
         {
             this.When((controllerContext, actionDescriptor) =>
@@ -149,7 +149,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenActionMethodHas<TAttribute>()
         {
             this.WhenActionMethodHas(typeof(TAttribute));
@@ -161,7 +161,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <param name="attributeType">Type of the attribute.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerHas(Type attributeType)
         {
             this.When((controllerContext, actionDescriptor) =>
@@ -174,7 +174,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// an attribute of the specified type.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerHas<TAttribute>()
         {
             this.WhenControllerHas(typeof(TAttribute));
@@ -185,7 +185,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Whens the type of the controller.
         /// </summary>
         /// <param name="controllerType">Type of the controller.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerType(Type controllerType)
         {
             this.When(
@@ -198,7 +198,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Whens the type of the controller.
         /// </summary>
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingInNamedWithOrOnSyntax<T> WhenControllerType<TAttribute>()
         {
             this.WhenControllerType(typeof(TAttribute));
@@ -209,7 +209,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that only a single instance of the binding should be created, and then
         /// should be re-used for all subsequent requests.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InSingletonScope()
         {
             this.filterBindingSyntax.InSingletonScope();
@@ -220,7 +220,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that instances activated via the binding should not be re-used, nor have
         /// their lifecycle managed by Ninject.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InTransientScope()
         {
             this.filterBindingSyntax.InTransientScope();
@@ -230,7 +230,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <summary>
         /// Indicates that instances activated via the binding should be re-used within the same thread.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InThreadScope()
         {
             this.filterBindingSyntax.InThreadScope();
@@ -241,7 +241,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that instances activated via the binding should be re-used within the same
         /// HTTP request.
         /// </summary>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InRequestScope()
         {
             this.filterBindingSyntax.InRequestScope();
@@ -253,7 +253,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// returned by the provided callback remains alive (that is, has not been garbage collected).
         /// </summary>
         /// <param name="scope">The callback that returns the scope.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InScope(Func<IContext, object> scope)
         {
             this.filterBindingSyntax.InScope(scope);
@@ -265,7 +265,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// returned by the provided callback remains alive (that is, has not been garbage collected).
         /// </summary>
         /// <param name="scope">The callback that returns the scope.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingNamedWithOrOnSyntax<T> InScope(Func<IContext, HttpConfiguration, HttpActionDescriptor, object> scope)
         {
             this.filterBindingSyntax.InScope(ctx =>
@@ -281,7 +281,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="value">The value for the argument.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(string name, object value)
         {
             this.filterBindingSyntax.WithConstructorArgument(name, value);
@@ -293,7 +293,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback to invoke to get the value for the argument.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(string name, Func<IContext, object> callback)
         {
             this.filterBindingSyntax.WithConstructorArgument(name, callback);
@@ -305,7 +305,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="value">The value for the property.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithPropertyValue(string name, object value)
         {
             this.filterBindingSyntax.WithPropertyValue(name, value);
@@ -317,7 +317,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The callback to invoke to get the value for the property.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithPropertyValue(string name, Func<IContext, object> callback)
         {
             this.filterBindingSyntax.WithPropertyValue(name, callback);
@@ -328,7 +328,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Adds a custom parameter to the binding.
         /// </summary>
         /// <param name="parameter">The parameter.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithParameter(IParameter parameter)
         {
             this.filterBindingSyntax.WithParameter(parameter);
@@ -340,7 +340,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="key">The metadata key.</param>
         /// <param name="value">The metadata value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithMetadata(string key, object value)
         {
             this.filterBindingSyntax.WithMetadata(key, value);
@@ -352,7 +352,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithConstructorArgument(
             string name,
             Func<IContext, HttpConfiguration, HttpActionDescriptor, object> callback)
@@ -374,7 +374,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
         /// <returns>
-        /// The fluent syntax to define more information
+        /// The fluent syntax to define more information.
         /// </returns>
         public IFilterBindingWithOrOnSyntax<T> WithConstructorArgumentFromActionAttribute<TAttribute>(
             string name,
@@ -395,7 +395,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <param name="name">The name of the argument to override.</param>
         /// <param name="callback">The callback.</param>
         /// <returns>
-        /// The fluent syntax to define more information
+        /// The fluent syntax to define more information.
         /// </returns>
         public IFilterBindingWithOrOnSyntax<T> WithConstructorArgumentFromControllerAttribute<TAttribute>(string name, Func<TAttribute, object> callback)
             where TAttribute : class
@@ -411,7 +411,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// </summary>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The cllback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithPropertyValue(
             string name,
             Func<IContext, HttpConfiguration, HttpActionDescriptor, object> callback)
@@ -432,7 +432,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The cllback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithPropertyValueFromActionAttribute<TAttribute>(
             string name,
             Func<TAttribute, object> callback)
@@ -451,7 +451,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
         /// <param name="name">The name of the property to override.</param>
         /// <param name="callback">The cllback to retrieve the value.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingWithOrOnSyntax<T> WithPropertyValueFromControllerAttribute<TAttribute>(string name, Func<TAttribute, object> callback)
             where TAttribute : class
         {
@@ -465,7 +465,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingOnSyntax<T> OnActivation(Action<T> action)
         {
             this.filterBindingSyntax.OnActivation(action);
@@ -476,7 +476,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingOnSyntax<T> OnActivation(Action<IContext, T> action)
         {
             this.filterBindingSyntax.OnActivation(action);
@@ -487,7 +487,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are deactivated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingOnSyntax<T> OnDeactivation(Action<IContext, T> action)
         {
             this.filterBindingSyntax.OnDeactivation(action);
@@ -498,7 +498,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are deactivated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingOnSyntax<T> OnDeactivation(Action<T> action)
         {
             this.filterBindingSyntax.OnDeactivation(action);
@@ -509,7 +509,7 @@ namespace Ninject.Web.WebApi.FilterBindingSyntax
         /// Indicates that the specified callback should be invoked when instances are activated.
         /// </summary>
         /// <param name="action">The action callback.</param>
-        /// <returns>The fluent syntax to define more information</returns>
+        /// <returns>The fluent syntax to define more information.</returns>
         public IFilterBindingOnSyntax<T> OnActivation(Action<IContext, HttpConfiguration, HttpActionDescriptor, T> action)
         {
             this.OnActivation((ctx, instance) =>

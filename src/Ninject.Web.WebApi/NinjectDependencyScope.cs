@@ -24,31 +24,30 @@ namespace Ninject.Web.WebApi
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.Remoting.Messaging;
     using System.Web.Http.Dependencies;
 
     using Ninject.Infrastructure.Disposal;
-    using Ninject.Parameters;
-    using Ninject.Syntax;
 
     /// <summary>
-    /// Dependency Scope implementation for ninject
+    /// Dependency Scope implementation for ninject.
     /// </summary>
     public class NinjectDependencyScope : DisposableObject, IDependencyScope
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NinjectDependencyScope"/> class.
         /// </summary>
-        /// <param name="resolutionRoot">The resolution root.</param>
-        public NinjectDependencyScope(IResolutionRoot resolutionRoot)
+        /// <param name="kernel">The <see cref="IKernel"/>.</param>
+        public NinjectDependencyScope(IKernel kernel)
         {
-            this.ResolutionRoot = resolutionRoot;
+            this.Kernel = kernel;
         }
 
         /// <summary>
-        /// Gets the resolution root.
+        /// Gets the <see cref="IKernel"/>.
         /// </summary>
-        /// <value>The resolution root.</value>
-        protected IResolutionRoot ResolutionRoot
+        /// <value>The <see cref="IKernel"/>.</value>
+        protected IKernel Kernel
         {
             get;
             private set;
@@ -61,8 +60,7 @@ namespace Ninject.Web.WebApi
         /// <returns>The service instance or <see langword="null"/> if none is configured.</returns>
         public object GetService(Type serviceType)
         {
-            var request = this.ResolutionRoot.CreateRequest(serviceType, null, new Parameter[0], true, true);
-            return this.ResolutionRoot.Resolve(request).SingleOrDefault();
+            return this.Kernel.TryGet(serviceType);
         }
 
         /// <summary>
@@ -72,7 +70,21 @@ namespace Ninject.Web.WebApi
         /// <returns>All service instances or an empty enumerable if none is configured.</returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
-            return this.ResolutionRoot.GetAll(serviceType).ToList();
+            return this.Kernel.GetAll(serviceType).ToList();
+        }
+
+        /// <summary>
+        /// Releases resources held by the object.
+        /// </summary>
+        /// <param name="disposing"><see langword="true"/> if called manually, otherwise by GC.</param>
+        public override void Dispose(bool disposing)
+        {
+            if (disposing && !this.IsDisposed)
+            {
+                CallContext.FreeNamedDataSlot(NinjectDependencyResolver.NinjectWebApiRequestScope);
+            }
+
+            base.Dispose(disposing);
         }
     }
 }
