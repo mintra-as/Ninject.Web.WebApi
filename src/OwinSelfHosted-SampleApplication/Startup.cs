@@ -47,7 +47,7 @@ namespace OwinSelfHosted_SampleApplication
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional, controller = "values" });
 
-            app.UseNinjectMiddleware(CreateKernel);
+            app.UseNinject(CreateKernel);
             app.UseNinjectWebApi(configuration);
         }
 

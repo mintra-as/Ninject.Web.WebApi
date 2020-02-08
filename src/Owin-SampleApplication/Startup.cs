@@ -42,7 +42,7 @@ namespace OwinSampleApplication
         /// </param>
         public void Configuration(IAppBuilder app)
         {
-            app.UseNinjectMiddleware(CreateKernel);
+            app.UseNinject(CreateKernel);
             app.UseWebApi(GlobalConfiguration.Configuration);
         }
 
