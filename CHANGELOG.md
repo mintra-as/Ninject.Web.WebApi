@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.3.2-mintra] - 2023-12-12
+
+### Fixed
+- NinjectWebApiHttpApplication plugin can no longer be started multiple times on the same kernel.
+
 ## [3.3.1] - 2020-02-08
 
 ### Changed
