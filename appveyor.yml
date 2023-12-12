@@ -33,9 +33,9 @@ build:
 artifacts:
   - path: 'src\**\*.nupkg'
 
-deploy:
-  provider: NuGet
-  api_key:
-    secure: ObZpjlJ2soInYT4Ooi+u2KeQQ1LRsBbRA9uPU7ctOma7CZxxNN8hPUVjwFUY2wS1
-  on:
-    appveyor_repo_tag: true
+# deploy:
+#   provider: NuGet
+#   api_key:
+#     secure: ObZpjlJ2soInYT4Ooi+u2KeQQ1LRsBbRA9uPU7ctOma7CZxxNN8hPUVjwFUY2wS1
+#   on:
+#     appveyor_repo_tag: true
