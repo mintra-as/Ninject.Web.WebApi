@@ -44,6 +44,16 @@ namespace Ninject.Web.WebApi
         private readonly IKernel kernel;
 
         /// <summary>
+        /// Lock used to prevent multiple threads accessing <see cref="Start"/>.
+        /// </summary>
+        private readonly object initLock = new object();
+
+        /// <summary>
+        /// Used to store state of whether the plugin has been initialized.
+        /// </summary>
+        private bool initialized;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="NinjectWebApiHttpApplicationPlugin"/> class.
         /// </summary>
         /// <param name="kernel">The kernel.</param>
@@ -67,17 +77,30 @@ namespace Ninject.Web.WebApi
         /// </summary>
         public void Start()
         {
-            var config = this.kernel.Get<HttpConfiguration>();
+            lock (this.initLock)
+            {
+                var config = this.kernel.Get<HttpConfiguration>();
 
-            var defaultFilterProviders = config.Services.GetServices(typeof(IFilterProvider)).Cast<IFilterProvider>();
-            config.Services.Clear(typeof(IFilterProvider));
-            this.kernel.Bind<DefaultFilterProviders>().ToConstant(new DefaultFilterProviders(defaultFilterProviders));
+                // Prevent duplicate bindings when multiple bootstrappers are in use
+                if (!this.initialized)
+                {
+                    var defaultFilterProviders =
+                        config.Services.GetServices(typeof(IFilterProvider)).Cast<IFilterProvider>();
+                    config.Services.Clear(typeof(IFilterProvider));
+                    this.kernel.Bind<DefaultFilterProviders>()
+                        .ToConstant(new DefaultFilterProviders(defaultFilterProviders));
 
-            var modelValidatorProviders = config.Services.GetServices(typeof(ModelValidatorProvider)).Cast<ModelValidatorProvider>();
-            config.Services.Clear(typeof(ModelValidatorProvider));
-            this.kernel.Bind<DefaultModelValidatorProviders>().ToConstant(new DefaultModelValidatorProviders(modelValidatorProviders));
+                    var modelValidatorProviders = config.Services.GetServices(typeof(ModelValidatorProvider))
+                        .Cast<ModelValidatorProvider>();
+                    config.Services.Clear(typeof(ModelValidatorProvider));
+                    this.kernel.Bind<DefaultModelValidatorProviders>()
+                        .ToConstant(new DefaultModelValidatorProviders(modelValidatorProviders));
+                }
 
-            config.DependencyResolver = this.CreateDependencyResolver();
+                config.DependencyResolver = this.CreateDependencyResolver();
+
+                this.initialized = true;
+            }
         }
 
         /// <summary>
