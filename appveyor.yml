@@ -10,7 +10,7 @@ init:
       }
       else
       {
-          Update-AppveyorBuild -Version "3.3.0-ci.$($env:APPVEYOR_BUILD_NUMBER)+sha.$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
+          Update-AppveyorBuild -Version "3.3.2-mintra+sha.$($env:APPVEYOR_REPO_COMMIT.substring(0,7))"
       }
 
 dotnet_csproj:
@@ -33,9 +33,9 @@ build:
 artifacts:
   - path: 'src\**\*.nupkg'
 
-deploy:
-  provider: NuGet
-  api_key:
-    secure: ObZpjlJ2soInYT4Ooi+u2KeQQ1LRsBbRA9uPU7ctOma7CZxxNN8hPUVjwFUY2wS1
-  on:
-    appveyor_repo_tag: true
+# deploy:
+#   provider: NuGet
+#   api_key:
+#     secure: ObZpjlJ2soInYT4Ooi+u2KeQQ1LRsBbRA9uPU7ctOma7CZxxNN8hPUVjwFUY2wS1
+#   on:
+#     appveyor_repo_tag: true
